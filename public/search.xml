@@ -19,10 +19,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>hexo搭建个人博客</title>
-    <url>/2021/12/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>大家好，我是王泰迪，是一名来自腾讯的推荐算法工程师。两年前我就买断了这个域名，但由于懒，一直没怎么写文章。随着人生阶段的不断深入，越来越认同把一些想法内化沉淀的重要性，写文章就是一个很好的手段。于是在2021年年末重启了这件事情，希望能给一路走来的自己做一个成长记录。</p>
-<p>第一篇就先简单写一下部署您看到的个人博客的工具–hexo的Quick Start吧.by mbp22</p>
+    <title>使用hexo搭建个人博客</title>
+    <url>/2021/12/24/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>大家好，我是王泰迪，是一名来自腾讯的推荐算法工程师。早在两年前我就买断了这个域名，但由于懒，一直没怎么写文章。随着人生阶段的不断深入，我越来越认同把一些想法内化沉淀的重要性，写文章就是一个很好的手段。于是在2021年年末重启了我这件事情，希望能坚持下来，给一路走来的自己做一个成长记录。</p>
+<p>第一篇文章，就先简单写下您当前看到的个人博客的部署工具hexo，一起来学习下它的安装和部署方式</p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>hexo安装请参考 <a href="https://hexo.io/zh-cn/%EF%BC%8C">https://hexo.io/zh-cn/，</a></p>
+<h3 id="个性化配置-hexo"><a href="#个性化配置-hexo" class="headerlink" title="个性化配置 hexo"></a>个性化配置 hexo</h3><p>参考 <a href="https://blog.csdn.net/as480133937/article/details/100138838">https://blog.csdn.net/as480133937/article/details/100138838</a> </p>
+<h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><p>参考 <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a></p>
 ]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
 </search>

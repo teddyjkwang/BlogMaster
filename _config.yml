@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true # when set true ,when use 'hexo new post_name',will generate post_name.md and directory 'post_name'
 relative_link: false
 future: true
 highlight:
