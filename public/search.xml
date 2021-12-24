@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>推荐系统中的召回</title>
+    <url>/posts/44f47eeb/</url>
+    <content><![CDATA[<p>《<strong>Deep learning for matching in search and Recommendation</strong>》<a href="https://gsai.ruc.edu.cn/uploads/20210701/74fa9572b1a1b5131271df0021435052.pdf">https://gsai.ruc.edu.cn/uploads/20210701/74fa9572b1a1b5131271df0021435052.pdf</a></p>
+<span id="more"></span>
+
+
+
+<p>李航、何向南老师的这篇文章是召回（matching）领域的一篇非常好的综述。本文想借着这篇论文的梳理思路，来展开学习一下推荐系统中召回领域的发展脉络。</p>
+]]></content>
+      <tags>
+        <tag>推荐系统</tag>
+        <tag>召回</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hexo搭建个人博客</title>
+    <url>/posts/ba7bb759/</url>
+    <content><![CDATA[<p>大家好，我是王泰迪，是一名来自腾讯的推荐算法工程师。早在两年前我就买断了这个域名，但由于懒，一直没怎么写文章。随着人生阶段的不断深入，我越来越认同把一些想法内化沉淀的重要性，写文章就是一个很好的手段。于是在2021年年末重启了我这件事情，希望能坚持下来，给一路走来的自己做一个成长记录。</p>
+<p>第一篇文章，就先简单写下您当前看到的个人博客的部署工具hexo，一起来学习下它的安装和部署方式</p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>hexo安装请参考 <a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a> ，</p>
+<h3 id="个性化配置-hexo"><a href="#个性化配置-hexo" class="headerlink" title="个性化配置 hexo"></a>个性化配置 hexo</h3><p>参考 <a href="https://blog.csdn.net/as480133937/article/details/100138838">https://blog.csdn.net/as480133937/article/details/100138838</a> </p>
+<h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><p>参考 <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a></p>
+<h3 id="hexo在不同电脑上的迁移"><a href="#hexo在不同电脑上的迁移" class="headerlink" title="hexo在不同电脑上的迁移"></a>hexo在不同电脑上的迁移</h3><p>我采用的方法是，将整体打包上传git，项目目录结构如下图，</p>
+<p><img src="/posts/ba7bb759/blog%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png"></p>
+<p>并在新电脑上，进入项目并执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure>
+
+<p>该命令会检测 ./package.json文件夹下依赖项，使得两边依赖对齐。</p>
+<p>评论系统使用livere <a href="https://livere.com/my_Livere">https://livere.com/my_Livere</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/posts/4a17b156/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -17,27 +52,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>使用hexo搭建个人博客</title>
-    <url>/posts/ba7bb759/</url>
-    <content><![CDATA[<p>大家好，我是王泰迪，是一名来自腾讯的推荐算法工程师。早在两年前我就买断了这个域名，但由于懒，一直没怎么写文章。随着人生阶段的不断深入，我越来越认同把一些想法内化沉淀的重要性，写文章就是一个很好的手段。于是在2021年年末重启了我这件事情，希望能坚持下来，给一路走来的自己做一个成长记录。</p>
-<p>第一篇文章，就先简单写下您当前看到的个人博客的部署工具hexo，一起来学习下它的安装和部署方式</p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>hexo安装请参考 <a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a> ，</p>
-<h3 id="个性化配置-hexo"><a href="#个性化配置-hexo" class="headerlink" title="个性化配置 hexo"></a>个性化配置 hexo</h3><p>参考 <a href="https://blog.csdn.net/as480133937/article/details/100138838">https://blog.csdn.net/as480133937/article/details/100138838</a> </p>
-<h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><p>参考 <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推荐系统中的召回</title>
-    <url>/posts/44f47eeb/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>推荐系统</tag>
-        <tag>召回</tag>
-      </tags>
   </entry>
 </search>

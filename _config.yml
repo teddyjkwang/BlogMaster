@@ -8,7 +8,7 @@ subtitle: ''
 description: ''
 keywords:
 author: teddyjkwang
-language: zh-Hans
+language: zh-CN
 timezone: UTC
 
 # URL
@@ -49,7 +49,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
@@ -138,13 +138,14 @@ live2d:
     height: 300
   mobile:
     show: true
+
 symbols_count_time:
   #文章内是否显示
   symbols: true
-  time: false
+  time: true
   # 网页底部是否显示
   total_symbols: true
-  total_time: false
+  total_time: true
   exclude_codeblock: false
   awl: 4
   wpm: 275
@@ -154,4 +155,12 @@ github_banner:
   enable: true
   permalink: https://github.com/teddyjkwang
   title: Follow me on GitHub
+
+# hexo-tag-cloud 标签云 | see https://github.com/MikeCoder/hexo-tag-cloud
+tag_cloud:
+  textFont: Trebuchet MS, Helvetica # 字体
+  textColor: '#555' # 字体颜色
+  textHeight: 25 # 字体高度
+  outlineColor: '#E2E1D1' # 字体背景色
+  maxSpeed: 0.1 # 标签云最大移动速度
 
