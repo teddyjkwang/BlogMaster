@@ -3,12 +3,45 @@
   <entry>
     <title>推荐系统中的召回</title>
     <url>/posts/44f47eeb/</url>
-    <content><![CDATA[<p>《<strong>Deep learning for matching in search and Recommendation</strong>》<a href="https://gsai.ruc.edu.cn/uploads/20210701/74fa9572b1a1b5131271df0021435052.pdf">https://gsai.ruc.edu.cn/uploads/20210701/74fa9572b1a1b5131271df0021435052.pdf</a></p>
+    <content><![CDATA[<p>李航、何向南老师的这篇文章《<a href="https://gsai.ruc.edu.cn/uploads/20210701/74fa9572b1a1b5131271df0021435052.pdf">Deep learning for matching in search and Recommendation</a>》是召回（matching）领域的一篇非常好的综述。有兴趣的同学可以下载下来好好读一读。本文借着这篇文章的梳理思路（对英文原文的翻译和理解），来展开学习一下推荐系统中召回领域的发展脉络。</p>
 <span id="more"></span>
-
-
-
-<p>李航、何向南老师的这篇文章是召回（matching）领域的一篇非常好的综述。本文想借着这篇论文的梳理思路，来展开学习一下推荐系统中召回领域的发展脉络。</p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>召回（matching）是指一个query对于一篇文档document的相关性（搜索领域定义），或是一个用户对于一个物品的感兴趣程度（推荐领域定义）。在搜索和推荐领域，召回都是一个关键和重要的问题。基于机器学习技术，我们可以根据输入特征表示和有标签的数据，来学习一个召回函数（matching function），这种方式被称为”learning to match”。近年来，使用深度学习技术在搜推领域的工作越来越多。背靠着海量数据和强大算力、以及逐步壮大的深度学习新技术，使用深度学习技术做召回已经成为了搜推领域的SOTA，这其中的关键是深度学习技术对于query、document、user、item、context等类的特征强大的表达和泛化能力。</p>
+<p>本综述首先以一个统一的视角，全面系统的总结了搜推领域的深度召回模型，让我们可以在统一的架构下审视两个不同场景中的问题；其次，本综述将深度召回模型方案分成两类：表示学习（representation learning）和召回函数学习（matching function learning）。</p>
+<p>最后，召回问题不限于搜推领域。相关问题也会出现在paraphrasing、QA、图像标注等。综述中介绍的方法能泛化成两个空间物体中的匹配问题。</p>
+<p>每章的内容概况：</p>
+<p>第一章：对搜索领域和推荐领域的基本情况进行介绍，对比两个领域的异同，说明两个领域分别的难点。并说明此篇综述不同于以往文章的原因</p>
+<p>第二章：对传统机器学习的介绍</p>
+<p>第三章：对深度学习介绍</p>
+<p>第四章：搜索领域中的深度召回模型介绍</p>
+<p>第五章：推荐领域中的深度召回模型介绍（本文重点剖析）</p>
+<p>第六章：总结与展望</p>
+<h1 id="Chapter-1-介绍"><a href="#Chapter-1-介绍" class="headerlink" title="Chapter 1 介绍"></a>Chapter 1 介绍</h1><h2 id="1-1-搜索和推荐"><a href="#1-1-搜索和推荐" class="headerlink" title="1.1 搜索和推荐"></a><del>1.1</del> 搜索和推荐</h2><p>搜索和推荐是当今两种信息获取的范式，被应用在许多场景中。比如抖音、微博，都有着自己推荐和搜索的场景，用户也经常使用这两种方式来获取信息。对互联网从业者来说，这里面至关重要的一个问题就是，在正确的时间、地点、上下文场景中，在巨大的内容池中，提供给用户他们感兴趣且相关的、需要的内容。</p>
+<p>下面两幅图比较好的说明了搜索和推荐的区别</p>
+<p>搜索：</p>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line">有<span class="keyword">query</span>：搜索框中输入的关键词（列表）</span><br><span class="line">搜索中最基本的机制是pull，即从用户侧获取明确的<span class="keyword">query</span>需求</span><br><span class="line">用户的需求得到满足，Beneficiary（受益人）是用户</span><br><span class="line">随机性（Serendipity）相对比较小，搜索系统返回的结果必须比较相关</span><br></pre></td></tr></table></figure>
+<p>推荐：</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">没有query的概念，推荐系统需要理解用户画像、历史行为等，将信息推荐给用户</span><br><span class="line">最基本的操作机制就是<span class="keyword">push</span>，给用户推荐一些他们并没有明确指定的信息</span><br><span class="line">受益人是用户（获得感兴趣的信息）和平台（获得流量收益）</span><br><span class="line">推荐系统是允许提供给用户一些意料之外的信息的（但要有用）</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/44f47eeb/搜索推荐区别表.png" alt></p>
+<p><img src="/posts/44f47eeb/搜索推荐统一视角.png" alt></p>
+<h1 id="Chapter-5-推荐领域的深度召回模型"><a href="#Chapter-5-推荐领域的深度召回模型" class="headerlink" title="Chapter 5 推荐领域的深度召回模型"></a>Chapter 5 推荐领域的深度召回模型</h1><blockquote>
+<p>深度学习用于推荐召回，主要可以分为两类：</p>
+<ul>
+<li><p>表示学习（Methods of representation learning）</p>
+<p>深度网络用来编码用户和物品的向量表示，并让他们进行比较，得出一个最终的匹配分数</p>
+</li>
+<li><p>召回函数学习 (Methods of matching function learning)</p>
+<p>深度学习用来做用户、物品、（上下文）等信息的交叉，来产生召回信号，并把它们相加，得到最终的匹配分数</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="5-1-基于表示学习的召回模型"><a href="#5-1-基于表示学习的召回模型" class="headerlink" title="5.1 基于表示学习的召回模型"></a>5.1 基于表示学习的召回模型</h2><p>下图是搜索系统的表示学习的召回模型，作为类比，query等价于推荐系统中的user，document等价于推荐系统中的item。原始输入的user和item分别在不同的表示空间，分别经过一个神经网络结构之后，分别映射到相同空间下的 user representation和item representation。定义user特征为u，item特征为i，基于表示学习的召回模型的表达式可以定义为：</p>
+<script type="math/tex; mode=display">
+f(u,i)=F(\phi_u(u),\phi_i(i))</script><p>其中 <script type="math/tex">F</script>是相同空间下的相似度量函数，比如内积、或者cosine函数。针对user和item输入数据，主要分为四种输入数据和其对应的处理方式：</p>
+<p>1.unordered interactions（用user在系统中的无序交互特征，比如深度MF、auto-encoder类模型）</p>
+<p>2.序列特征（处理序列特征，比如RNN类或CNN类模型）</p>
+<p>3.多模态特征（user/item 属性、文本、图像）</p>
+<p>4.linked graph（user-item graph 或 知识图谱）</p>
+<p><img src="/posts/44f47eeb/基于表示学习的召回模型.png" alt></p>
 ]]></content>
       <tags>
         <tag>推荐系统</tag>
@@ -24,13 +57,15 @@
 <h3 id="个性化配置-hexo"><a href="#个性化配置-hexo" class="headerlink" title="个性化配置 hexo"></a>个性化配置 hexo</h3><p>参考 <a href="https://blog.csdn.net/as480133937/article/details/100138838">https://blog.csdn.net/as480133937/article/details/100138838</a> </p>
 <h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><p>参考 <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a></p>
 <h3 id="hexo在不同电脑上的迁移"><a href="#hexo在不同电脑上的迁移" class="headerlink" title="hexo在不同电脑上的迁移"></a>hexo在不同电脑上的迁移</h3><p>我采用的方法是，将整体打包上传git，项目目录结构如下图，</p>
-<p><img src="/posts/ba7bb759/blog%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png"></p>
+<p><img src="/posts/ba7bb759/blog文件夹目录结构.png" alt></p>
 <p>并在新电脑上，进入项目并执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure>
-
 <p>该命令会检测 ./package.json文件夹下依赖项，使得两边依赖对齐。</p>
 <p>评论系统使用livere <a href="https://livere.com/my_Livere">https://livere.com/my_Livere</a></p>
 ]]></content>
+      <categories>
+        <category>hexo搭建博客</category>
+      </categories>
       <tags>
         <tag>hexo</tag>
       </tags>
@@ -40,16 +75,12 @@
     <url>/posts/4a17b156/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>

@@ -1,8 +1,11 @@
 ---
 title: 使用hexo搭建个人博客
 tags: hexo
+categories: hexo搭建博客
 abbrlink: ba7bb759
 date: 2021-12-23 20:21:56
+updated: 2021-12-23 20:21:56
+copyright: false
 
 ---
 
